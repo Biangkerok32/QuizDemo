@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			line-height: 30px;
+			color: #fff;
+		}
+		h1{
+			color: #000;
+		}
+		.correct{
+			background-color: green;
+		}
+		.false{
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<script type="text/javascript">
+		function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+		debugger;
+		var x=localStorage.getItem('Q1ChoosenAnswer');
+		var y=localStorage.getItem('Q2ChoosenAnswer');
+		var z=localStorage.getItem('Q3ChoosenAnswer');
+		var arr =['Hyper Text Markup Language','The World Wide Web Consortium','h1'];
+		var class1="";
+		var class2="";
+		var class3="";
+		myFunction();
+		function myFunction() {
+			var count=0;
+			if (x==arr[0]) {
+				class1="correct";
+				count++;
+			}else{
+				class1="false";
+			}
+			if (y==arr[1]) {
+				class2="correct";
+				count++;
+			}else{
+				class2="false";
+			}
+			if (z==arr[2]) {
+				class3="correct";
+				count++;
+			}else{
+				class3="false";
+			}
+			document.getElementsByTagName("BODY")[0].innerHTML='<div class="container my-5">'
+		+"<h1>Your Final Score is: "+count+"/3</h1></div>";
+		}
+
+		document.getElementsByTagName("BODY")[0].innerHTML+='<div class="container">'
+		+'<div class="row my-5">'
+		+'<div class="col-sm-12">'
+		+'<table class="table">'
+		+'<thead class="thead-dark">'
+		+'<tr>'
+		+'<th scope="col">Q#</th>'
+		+'<th scope="col">The Choosen Answer</th>'
+		+'<th scope="col">The Correct Answer</th>'
+		+'</tr></thead>'
+		+'<tbody><tr class='+class1+'>'
+		+'<th scope="row">1</th>'
+		+'<td>'+x+'</td>'
+		+'<td>'+arr[0]+'</td></tr>'
+		+'<tr class='+class2+'>'
+		+'<th scope="row">1</th>'
+		+'<td>'+y+'</td>'
+		+'<td>'+arr[1]+'</td></tr>'
+		+'<tr class='+class3+'>'
+		+'<th scope="row">1</th>'
+		+'<td>'+z+'</td>'
+		+'<td>'+arr[2]+'</td></tr></tbody></table></div></div>';
+	</script>
+</body>
+</html>

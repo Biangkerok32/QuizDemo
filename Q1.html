@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style type="text/css">
+		body{
+			line-height: 30px;
+		}
+		.m{
+			padding-left: 500px;
+		}
+	</style>
+</head>
+<body>
+				<nav class="navbar navbar-expand-lg navbar-light bg-light">
+					<div class="container">
+					  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+					    <span class="navbar-toggler-icon"></span>
+					  </button>
+					  <div class="collapse navbar-collapse m" id="navbarText">
+					  	<span id="Timer" class="mx-3">00:20</span>
+					    <span class="navbar-text">
+					      <a href="login.html">Logout</a>
+					    </span>
+					  </div>
+					  <div id="app"></div>
+					</div>
+				</nav>
+	<div class="container">
+		<div class="row my-5">
+			<div class="col-sm-12">
+				  <h2>Question #1:</h2>
+				  <p>What does HTML stand for?</p>
+					<form name="form" action="Q2.html">
+					  <div class="form-check">
+					      <label class="form-check-label" for="radio1">
+					        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="Hyper Text Markup Language" onclick="RFun(this.value)">  Hyper Text Markup Language
+					      </label>
+					    </div>
+					    <div class="form-check">
+					      <label class="form-check-label" for="radio2">
+					        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="Home Tool Markup Language" onclick="RFun(this.value)"> Home Tool Markup Language
+					      </label>
+					    </div>
+					    <div class="form-check">
+					      <label class="form-check-label" for="radio2">
+					        <input type="radio" class="form-check-input" id="radio3" name="optradio" value="Hyperlinks and Text Markup Language" onclick="RFun(this.value)"> Hyperlinks and Text Markup Language
+					      </label>
+					    </div>
+					    <button type="submit" class="btn btn-primary" id="submit" disabled onclick="SubmitFun()">Next</button>
+					 </form>
+
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		debugger;
+		/*Prevent The Back btn*/
+		function preventBack() { window.history.forward(); }
+        setTimeout("preventBack()", 0);
+        window.onunload = function () { null };
+		function RFun(value) {
+			debugger;
+			document.getElementById('submit').disabled=false;
+			localStorage.setItem("Q1ChoosenAnswer", value);
+		}
+		/*Timer*/
+		var timeleft = 0;
+		var flag =0;
+		var downloadTimer = setInterval(function(){
+		  if(timeleft >= 20){
+		    clearInterval(downloadTimer);
+		    debugger;
+		    for (var i=0;i<(document.form.optradio.length);i++) {
+		    	if (document.form.optradio[i].checked)
+			        {
+			            localStorage.setItem("Q1ChoosenAnswer", value);
+			            flag=1; 
+			        } 
+		    }
+		    if (flag==0) {
+		    	localStorage.setItem("Q1ChoosenAnswer", "");
+		    }
+		    window.location.href="Q2.html"; 
+		  }
+		  document.getElementById("Timer").innerHTML ="00:"+(20 - timeleft) ;
+		  timeleft += 1;
+		}, 1000);
+	</script>
+</body>
+</html>
